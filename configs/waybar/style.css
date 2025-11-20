@@ -1,5 +1,6 @@
 /* ================================
    Beautiful Minimal Waybar Theme
+   (GTK-compatible)
    ================================ */
 
 * {
@@ -8,10 +9,10 @@
     color: #e5e5e5;
 }
 
+/* Bar background */
 window {
     background-color: rgba(20, 20, 20, 0.45);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* --- Workspaces --- */
@@ -22,21 +23,21 @@ window {
 #workspaces button {
     margin: 4px 4px;
     padding: 0 8px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.09);
     border-radius: 6px;
-    border: 1px solid transparent;
-    transition: all 0.15s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: #cccccc;
+    transition: background-color 150ms ease, border-color 150ms ease;
 }
 
 #workspaces button:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.13);
 }
 
 #workspaces button.active {
     background: rgba(255, 255, 255, 0.20);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    color: white;
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
 }
 
 /* --- Modules (Right side) --- */
@@ -45,10 +46,10 @@ window {
 #clock {
     padding: 0 12px;
     margin: 0 6px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.09);
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: background 0.15s ease;
+    transition: background-color 150ms ease;
 }
 
 #network:hover,
@@ -57,9 +58,10 @@ window {
     background: rgba(255, 255, 255, 0.14);
 }
 
-/* --- Remove module overflow glow --- */
+/* Tooltip */
 tooltip {
-    background: rgba(15, 15, 15, 0.85);
+    background-color: rgba(15, 15, 15, 0.90);
     border-radius: 6px;
     padding: 6px 10px;
+    color: #ffffff;
 }
