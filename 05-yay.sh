@@ -18,3 +18,10 @@ echo ">>> Installing Zen Browser..."
 yay -S --noconfirm zen-browser-bin
 
 echo ">>> Zen Browser installed!"
+
+echo ">>> Installing Bibata cursor theme..."
+yay -S --noconfirm bibata-cursor-theme-bin
+
+
+echo ">>> Bibata Cursor Theme installed!"
+
