@@ -7,20 +7,23 @@ sudo pacman -Syu --noconfirm
 echo ">>> Installing minimal required packages..."
 
 sudo pacman -S --noconfirm \
-    # Wayland core
-    hyprland hyprpaper hypridle xdg-desktop-portal-hyprland xwayland \
+    hyprland \
+    hyprpaper \
+    hypridle \
+    xdg-desktop-portal-hyprland \
+    xwayland \
     wl-clipboard \
-    # Terminal
     ghostty \
-    # UI tools
-    fuzzel thunar feh \
-    # Audio
-    pipewire pipewire-pulse wireplumber \
-    # Fonts (mono only)
+    fuzzel \
+    thunar \
+    feh \
+    pipewire \
+    pipewire-pulse \
+    wireplumber \
     ttf-jetbrains-mono-nerd \
-    # Display manager
     ly \
-    # Bar
     waybar \
-    # Essentials
-    git base-devel networkmanager zram-generator
+    git \
+    base-devel \
+    networkmanager \
+    zram-generator
