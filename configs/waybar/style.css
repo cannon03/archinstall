@@ -44,18 +44,44 @@ window {
 #network,
 #battery,
 #clock {
-    padding: 0 12px;
-    margin: 0 6px;
-    background: rgba(255, 255, 255, 0.09);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: background-color 150ms ease;
+    padding: 0 14px;
+    margin: 0 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 200ms ease;
+    min-width: 80px;
+    text-align: center;
 }
 
 #network:hover,
 #battery:hover,
 #clock:hover {
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Battery specific styling */
+#battery {
+    min-width: 100px;
+}
+
+#battery.warning {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #ffc107;
+}
+
+#battery.critical {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.4);
+    color: #dc3545;
+}
+
+#battery.charging {
+    background: rgba(40, 167, 69, 0.2);
+    border-color: rgba(40, 167, 69, 0.4);
+    color: #28a745;
 }
 
 /* Tooltip */

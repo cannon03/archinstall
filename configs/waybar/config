@@ -26,9 +26,17 @@
     "tooltip": false
   },
   "battery": {
-    "format": "{capacity}%",
+    "format": "🔋 {capacity}%",
     "format-charging": "⚡ {capacity}%",
     "format-plugged": "🔌 {capacity}%",
+    "format-full": "🔋 {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-warning": "⚠️ {capacity}%",
+    "format-critical": "❗ {capacity}%",
+    "interval": 30,
     "tooltip": false
   },
   "clock": {
