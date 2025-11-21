@@ -1,139 +1,139 @@
-/* style.css - Waybar (GTK-like variables) */
+/* ======================================
+   Modern Waybar Theme (Pure GTK CSS)
+   ====================================== */
 
-/* -------------------------
-   Theme variables (GTK-like)
-   ------------------------- */
-:root {
-  /* Backgrounds */
-  --bg: rgba(26, 28, 30, 0.85);        /* bar background */
-  --panel: rgba(36, 38, 40, 0.85);     /* panel items bg on hover/active */
+/* --- Color Tokens (GTK syntax) --- */
+@define-color bar-bg rgba(24, 25, 27, 0.78);
+@define-color item-bg rgba(255, 255, 255, 0.06);
+@define-color item-hover rgba(255, 255, 255, 0.12);
 
-  /* Foreground / text */
-  --fg: #e6eef6;
-  --muted: #a6b0bd;
+@define-color fg #e8ebf0;
+@define-color muted #9aa3ad;
 
-  /* Accent */
-  --accent: #7ccfdf;
-  --accent-strong: #4fb3c7;
+@define-color accent #7cd4f5;
+@define-color ok #9fe29f;
+@define-color warn #f3c178;
+@define-color crit #ff7070;
 
-  /* Status colors */
-  --ok: #8bd77c;
-  --warn: #f0b36b;
-  --crit: #ff6b6b;
-
-  /* Geometry */
-  --radius: 8px;
-  --padding: 6px 10px;
-}
-
-/* Bar container */
-#window {
-  background: transparent;
-}
-
+/* --- Bar Container --- */
 #bar {
-  background: var(--bg);
-  color: var(--fg);
-  border-radius: var(--radius);
-  padding: 4px;
+  background-color: @bar-bg;
+  padding: 6px 12px;
   margin: 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.40);
+  color: @fg;
 }
 
-/* Each module cell */
-.background, .bar, .module {
-  background: transparent;
-  color: var(--fg);
+/* --- Shared module styling --- */
+#bar * {
   font-weight: 500;
-  height: 26px;
-  line-height: 26px;
+  border-radius: 10px;
+  padding: 6px 12px;
 }
 
-/* Workspace buttons */
+/* --- Workspaces --- */
 #workspaces {
-  display: flex;
-  gap: 8px;
+  spacing: 8px;
 }
 
 #workspaces button {
-  background: transparent;
-  border-radius: 6px;
-  padding: 4px 8px;
-  color: var(--muted);
-  border: none;
-  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+  background-color: transparent;
+  color: @muted;
+  padding: 6px 14px;
+  border-radius: 10px;
+  transition: 200ms ease;
 }
 
-/* active workspace */
-#workspaces button.workspace--focused,
-#workspaces button[workspace-active="true"] {
-  color: var(--fg);
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  transform: translateY(-1px);
+/* focused */
+#workspaces button.workspace--focused {
+  background-color: @item-bg;
+  color: @fg;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-/* visible but not focused */
+/* visible (but not focused) */
 #workspaces button.workspace--visible {
-  color: var(--muted);
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.02);
+  color: @fg;
 }
 
 /* urgent */
 #workspaces button.workspace--urgent {
-  color: var(--crit);
-  border: 1px solid rgba(255,0,64,0.08);
-  animation: pulse 1500ms infinite;
+  background-color: rgba(255, 80, 80, 0.16);
+  color: @crit;
+  box-shadow: inset 0 0 0 1px rgba(255, 80, 80, 0.25);
 }
 
-/* Clock center */
+/* hover */
+#workspaces button:hover {
+  background-color: @item-hover;
+  color: @fg;
+}
+
+/* --- Clock --- */
 #clock {
+  background-color: @item-bg;
+  padding: 6px 16px;
   font-weight: 600;
-  color: var(--fg);
-  padding: 4px 12px;
-  border-radius: 6px;
+  border-radius: 12px;
+  color: @fg;
+  margin: 0 12px;
 }
 
-/* Right-side modules style */
-#network, #battery {
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--muted);
-  display: flex;
-  gap: 8px;
-  align-items: center;
+#clock:hover {
+  background-color: @item-hover;
 }
 
-/* Battery status colors */
-#battery[data-state="Charging"] { color: var(--accent); }
-#battery[data-state="Discharging"] { color: var(--fg); }
-#battery[data-state="Low"] { color: var(--warn); }
-#battery[data-state="Critical"] { color: var(--crit); }
+/* --- Network --- */
+#network {
+  color: @muted;
+}
 
-/* Network strong/weak (Waybar can emit classes or data attributes if configured) */
-#network[data-signal="strong"] { color: var(--ok); }
-#network[data-signal="weak"] { color: var(--warn); }
-#network[data-signal="none"] { color: var(--muted); }
+#network:hover {
+  background-color: @item-hover;
+  color: @fg;
+}
 
-/* tray - subtle */
+#network.linked {
+  color: @ok;
+}
+
+#network.disconnected {
+  color: @warn;
+}
+
+/* --- Battery --- */
+#battery {
+  color: @muted;
+}
+
+#battery:hover {
+  background-color: @item-hover;
+  color: @fg;
+}
+
+#battery.charging {
+  color: @accent;
+}
+
+#battery.warning {
+  color: @warn;
+}
+
+#battery.critical {
+  color: @crit;
+  background-color: rgba(255, 80, 80, 0.14);
+}
+
+/* --- Tray --- */
 #tray {
+  padding-left: 8px;
   margin-left: 6px;
-  padding-left: 6px;
-  border-left: 1px solid rgba(255,255,255,0.03);
+  border-left: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Hover states */
-button:hover, #network:hover, #battery:hover, #clock:hover {
-  background: var(--panel);
-  color: var(--fg);
-  cursor: pointer;
-}
-
-/* small animation */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255,0,64,0.0); }
-  70% { box-shadow: 0 0 0 6px rgba(255,0,64,0.04); }
-  100% { box-shadow: 0 0 0 0 rgba(255,0,64,0.0); }
+#tray > .tray-item:hover {
+  background-color: @item-hover;
 }
