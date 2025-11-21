@@ -24,4 +24,4 @@ sudo pacman -S --noconfirm \
     git \
     base-devel \
     networkmanager \
-    zram-generator
+    zram-generator \
