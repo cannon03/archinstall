@@ -16,12 +16,12 @@ sudo pacman -S --noconfirm \
     pipewire-pulse \
     wireplumber \
     ttf-jetbrains-mono-nerd \
-    noto-fonts \
-    noto-fonts-cjk \ 
-    noto-fonts-emoji \
     ly \
     waybar \
     git \
     base-devel \
     networkmanager \
     zram-generator \
+    noto-fonts \
+    noto-fonts-cjk \
+    noto-fonts-emoji \
