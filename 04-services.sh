@@ -17,7 +17,6 @@ sudo systemctl enable NetworkManager
 sudo systemctl enable ly
 
 # zram swap
-sudo systemctl enable systemd-zram-setup@zram0
 sudo systemctl start  systemd-zram-setup@zram0
 
 echo ">>> Services enabled."
