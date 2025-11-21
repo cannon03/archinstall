@@ -1,138 +1,174 @@
-/* ======================================
-   Modern Minimal Waybar (GTK-CSS Safe)
-   ====================================== */
-
-/* Palette */
-@define-color bg rgba(25, 26, 28, 0.82);
-@define-color surface rgba(255, 255, 255, 0.06);
-@define-color surface-hover rgba(255, 255, 255, 0.12);
-
-@define-color fg #e9ecf1;
-@define-color muted #8f97a2;
-@define-color accent #6cd0f0;
-@define-color warn #f3c178;
-@define-color crit #ff7070;
-@define-color ok #a6e3a1;
-
-/* ======== BAR ======== */
-
-#bar {
-  background-color: @bg;
-  padding: 6px;
-  border-radius: 14px;
-  color: @fg;
-}
-
-/* Universal module styling */
-#bar * {
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 11pt;
-  color: @fg;
-}
-
-/* ======== WORKSPACES ======== */
-
-#workspaces button {
-  background-color: transparent;
+/* -- Global rules -- */
+* {
   border: none;
-  color: @muted;
-  padding: 6px 14px;
-  border-radius: 12px;
+  font-family: "JetbrainsMono Nerd Font";
+  font-size: 15px;
+  min-height: 10px;
 }
 
-/* Focused workspace */
-#workspaces button.workspace--focused {
-  background-color: @surface;
-  color: @fg;
+window#waybar {
+  background: rgba(34, 36, 54, 0.6);
 }
 
-/* Urgent workspace */
-#workspaces button.workspace--urgent {
-  background-color: rgba(255,80,80,0.15);
-  color: @crit;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(255,80,80,0.25);
+window#waybar.hidden {
+  opacity: 0.2;
 }
 
-/* Hover */
-#workspaces button:hover {
-  background-color: @surface-hover;
-  color: @fg;
+/* - Genera rules for visible modules -- */
+#custom-archicon,
+#clock,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#idle_inhibitor,
+#pulseaudio,
+#pulseaudio-slider,
+#network,
+#language {
+  color: #161320;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
 }
 
-/* ======== CLOCK ======== */
+/* Separation to the left */
+#custom-archicon,
+#cpu,
+#idle_inhibitor {
+  margin-left: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Separation to the rigth */
+#clock,
+#temperature,
+#language {
+  margin-right: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* -- Specific styles -- */
+
+/* Modules left */
+#custom-archicon {
+  font-size: 20px;
+  color: #89B4FA;
+  background: #161320;
+  padding-right: 17px;
+}
 
 #clock {
-  background-color: @surface;
-  padding: 6px 18px;
-  border-radius: 12px;
-  font-weight: 700;
+  background: #ABE9B3;
 }
 
-#clock:hover {
-  background-color: @surface-hover;
+#cpu {
+  background: #96CDFB;
 }
 
-/* ======== NETWORK ======== */
+#memory {
+  background: #DDB6F2;
+}
+
+#disk {
+  background: #F5C2E7;
+}
+
+#temperature {
+  background: #F8BD96;
+}
+
+/* Modules center */
+#workspaces {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 6px 5px;
+  padding: 0px 6px;
+}
+
+#workspaces button {
+  color: #B5E8E0;
+  background: transparent;
+  padding: 4px 4px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#workspaces button.occupied {
+  color: #A6E3A1;
+}
+
+#workspaces button.active {
+  color: #89B4FA;
+  text-shadow: 0 0 4px #ABE9B3;
+}
+
+#workspaces button:hover {
+  color: #89B4FA;
+}
+
+#workspaces button.active:hover {}
+
+/* Modules right */
+#taskbar {
+  background: transparent;
+  border-radius: 10px;
+  padding: 0px 5px;
+  margin: 6px 5px;
+}
+
+#taskbar button {
+  padding: 0px 5px;
+  margin: 0px 3px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#taskbar button.active {
+  background: rgba(34, 36, 54, 0.5);
+}
+
+#taskbar button:hover {
+  background: rgba(34, 36, 54, 0.5);
+}
+
+#idle_inhibitor {
+  background: #B5E8E0;
+  padding-right: 15px;
+}
+
+#pulseaudio {
+  min-width: 55px;
+  color: #1A1826;
+  background: #F5E0DC;
+}
+
+#pulseaudio-slider {
+  color: #1A1826;
+  background: #E8A2AF;
+  min-width: 50px;
+}
+
+#pulseaudio-slider slider {}
+
 
 #network {
-  color: @muted;
-  border-radius: 10px;
+  background: #CBA6F7;
+  padding-right: 13px;
 }
 
-#network:hover {
-  background-color: @surface-hover;
-  color: @fg;
+#language {
+  background: #A6E3A1;
+  padding-right: 15px;
 }
 
-#network.linked {
-  color: @ok;
-}
-
-#network.disconnected {
-  color: @warn;
-}
-
-/* ======== BATTERY ======== */
-
-#battery {
-  color: @muted;
-  border-radius: 10px;
-}
-
-#battery:hover {
-  background-color: @surface-hover;
-  color: @fg;
-}
-
-#battery.charging {
-  color: @accent;
-}
-
-#battery.warning {
-  color: @warn;
-}
-
-#battery.critical {
-  color: @crit;
-  background-color: rgba(255,80,80,0.12);
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(255,80,80,0.16);
-}
-
-/* ======== TRAY ======== */
-
-#tray {
-  padding-left: 8px;
-  padding-right: 8px;
-  border-left: 1px solid rgba(255,255,255,0.04);
-}
-
-#tray .tray-item:hover {
-  background-color: @surface-hover;
-  color: @fg;
+/* === Optional animation === */
+@keyframes blink {
+  to {
+    background-color: #BF616A;
+    color: #B5E8E0;
+  }
 }
