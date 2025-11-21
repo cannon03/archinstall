@@ -1,96 +1,93 @@
 /* ======================================
-   Final GTK-CSS for Waybar (Strict-safe)
-   - No max-width/min-width, no invalid props
-   - Only GTK-supported properties used
+   Modern Minimal Waybar (GTK-CSS Safe)
    ====================================== */
 
-/* Color tokens */
-@define-color bar-bg rgba(18,20,22,0.82);
-@define-color item-bg rgba(255,255,255,0.04);
-@define-color item-hover rgba(255,255,255,0.08);
+/* Palette */
+@define-color bg rgba(25, 26, 28, 0.82);
+@define-color surface rgba(255, 255, 255, 0.06);
+@define-color surface-hover rgba(255, 255, 255, 0.12);
 
-@define-color fg #e7eaf0;
-@define-color muted #9aa3ad;
-@define-color accent #63d0ea;
-@define-color ok #9fe29f;
+@define-color fg #e9ecf1;
+@define-color muted #8f97a2;
+@define-color accent #6cd0f0;
 @define-color warn #f3c178;
 @define-color crit #ff7070;
+@define-color ok #a6e3a1;
 
-/* ======= Bar container ======= */
+/* ======== BAR ======== */
+
 #bar {
-  background-color: @bar-bg;
-  color: @fg;
+  background-color: @bg;
   padding: 6px;
-  border-radius: 12px;
+  border-radius: 14px;
+  color: @fg;
 }
 
-/* Base pill/text style inside the bar */
+/* Universal module styling */
 #bar * {
-  color: @fg;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 10px;
   font-weight: 600;
   font-size: 11pt;
+  color: @fg;
 }
 
-/* ======= Workspaces ======= */
+/* ======== WORKSPACES ======== */
+
 #workspaces button {
   background-color: transparent;
-  color: @muted;
   border: none;
-  padding: 6px 12px;
-  border-radius: 10px;
+  color: @muted;
+  padding: 6px 14px;
+  border-radius: 12px;
 }
 
-/* focused workspace \u2014 subtle filled pill */
+/* Focused workspace */
 #workspaces button.workspace--focused {
-  background-color: @item-bg;
+  background-color: @surface;
   color: @fg;
 }
 
-/* visible workspace (not focused) */
-#workspaces button.workspace--visible {
-  color: @fg;
-}
-
-/* urgent workspace */
+/* Urgent workspace */
 #workspaces button.workspace--urgent {
-  background-color: rgba(255,80,80,0.12);
+  background-color: rgba(255,80,80,0.15);
   color: @crit;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(255,80,80,0.14);
+  border-color: rgba(255,80,80,0.25);
 }
 
-/* hover fallback (GTK hover behavior) */
+/* Hover */
 #workspaces button:hover {
-  background-color: @item-hover;
+  background-color: @surface-hover;
   color: @fg;
 }
 
-/* ======= Clock (center) ======= */
+/* ======== CLOCK ======== */
+
 #clock {
-  background-color: @item-bg;
-  padding: 6px 14px;
+  background-color: @surface;
+  padding: 6px 18px;
   border-radius: 12px;
-  color: @fg;
   font-weight: 700;
 }
 
-/* hover for clock */
 #clock:hover {
-  background-color: @item-hover;
+  background-color: @surface-hover;
 }
 
-/* ======= Network ======= */
+/* ======== NETWORK ======== */
+
 #network {
   color: @muted;
-  padding-left: 8px;
-  padding-right: 8px;
   border-radius: 10px;
 }
 
-/* Connected / disconnected (Waybar may add these classes) */
+#network:hover {
+  background-color: @surface-hover;
+  color: @fg;
+}
+
 #network.linked {
   color: @ok;
 }
@@ -99,20 +96,18 @@
   color: @warn;
 }
 
-#network:hover {
-  background-color: @item-hover;
-  color: @fg;
-}
+/* ======== BATTERY ======== */
 
-/* ======= Battery ======= */
 #battery {
   color: @muted;
-  padding-left: 8px;
-  padding-right: 8px;
   border-radius: 10px;
 }
 
-/* charging / warning / critical classes Waybar may provide */
+#battery:hover {
+  background-color: @surface-hover;
+  color: @fg;
+}
+
 #battery.charging {
   color: @accent;
 }
@@ -123,33 +118,21 @@
 
 #battery.critical {
   color: @crit;
-  background-color: rgba(255,80,80,0.10);
+  background-color: rgba(255,80,80,0.12);
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(255,80,80,0.10);
+  border-color: rgba(255,80,80,0.16);
 }
 
-#battery:hover {
-  background-color: @item-hover;
-  color: @fg;
-}
+/* ======== TRAY ======== */
 
-/* ======= Tray ======= */
 #tray {
   padding-left: 8px;
   padding-right: 8px;
   border-left: 1px solid rgba(255,255,255,0.04);
 }
 
-/* tray item hover */
-#tray > .tray-item:hover {
-  background-color: @item-hover;
+#tray .tray-item:hover {
+  background-color: @surface-hover;
   color: @fg;
-}
-
-/* ======= Muted label helper ======= */
-.label-muted {
-  color: @muted;
-  font-weight: 500;
-  font-size: 9pt;
 }
