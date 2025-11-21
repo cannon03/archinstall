@@ -17,6 +17,8 @@ bash ./02-hyprland-config.sh
 bash ./03-waybar-config.sh
 bash ./04-services.sh
 bash ./05-yay.sh
+bash ./06-scripts.sh
+
 
 
 
